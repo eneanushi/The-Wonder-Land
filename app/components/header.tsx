@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Menu, X, Sparkles, BookOpen, User, ShoppingCart } from "lucide-react"
+import { Menu, X, Sparkles, BookOpen } from "lucide-react"
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -50,7 +50,7 @@ export default function Header() {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-4">
             {navItems.map((item) => (
               <a
                 key={item.href}
@@ -78,9 +78,6 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Desktop CTA Buttons */}
-          
-
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -98,23 +95,13 @@ export default function Header() {
                 <a
                   key={item.name}
                   href={item.href}
-                  onClick={() => setIsMenuOpen(false)}
                   className="flex items-center space-x-3 text-white hover:text-pink-200 transition-colors duration-300 font-sans font-medium py-2 animate-fadeInUp"
+                  onClick={() => setIsMenuOpen(false)}
                 >
                   {item.icon && <span className="text-pink-200 animate-floatSlow">{item.icon}</span>}
                   <span>{item.name}</span>
                 </a>
               ))}
-              <div className="border-t border-pink-100 pt-4 space-y-3">
-                <button className="flex items-center space-x-3 text-pink-400 hover:text-yellow-500 transition-colors duration-300 font-sans font-medium py-2 w-full animate-fadeInUp bg-white/40 rounded-full shadow-md hover:shadow-pink-200">
-                  <User className="w-4 h-4" />
-                  <span>Sign In</span>
-                </button>
-                <button className="flex items-center justify-center space-x-2 w-full px-4 py-3 bg-gradient-to-r from-pink-100 via-yellow-100 to-purple-100 text-pink-500 font-semibold rounded-full hover:shadow-xl transition-all duration-500 font-sans animate-glow border border-pink-100/60">
-                  <ShoppingCart className="w-4 h-4 animate-wiggle" />
-                  <span>Cart</span>
-                </button>
-              </div>
             </nav>
           </div>
         )}
