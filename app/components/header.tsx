@@ -51,33 +51,31 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            {navItems.map((item, idx) => {
-              return (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className={
-                    `group relative flex items-center font-sans font-semibold px-5 py-2 rounded-full transition-all duration-300
-                    bg-white/5 backdrop-blur-sm
-                    text-white shadow-none
-                    hover:scale-105
-                    before:content-[''] before:absolute before:inset-0 before:rounded-full before:bg-gradient-to-r before:from-pink-400/40 before:via-purple-500/40 before:to-sky-400/40 before:opacity-60 before:transition-all before:duration-500
-                    hover:before:opacity-90
-                    z-10 overflow-hidden`
-                  }
-                  style={{
-                    textShadow: '0 2px 8px #a259ff, 0 0 16px #fff',
-                    fontSize: '1.05rem',
-                    letterSpacing: '0.01em',
-                  }}
-                >
-                  <span className="relative z-10 flex items-center gap-1">
-                    {item.icon && <span className="group-hover:animate-bounce-gentle animate-floatSlow">{item.icon}</span>}
-                    {item.name}
-                  </span>
-                </a>
-              );
-            })}
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className={
+                  `group relative flex items-center font-sans font-semibold px-5 py-2 rounded-full transition-all duration-300
+                  bg-white/5 backdrop-blur-sm
+                  text-white shadow-none
+                  hover:scale-105
+                  before:content-[''] before:absolute before:inset-0 before:rounded-full before:bg-gradient-to-r before:from-pink-400/40 before:via-purple-500/40 before:to-sky-400/40 before:opacity-60 before:transition-all before:duration-500
+                  hover:before:opacity-90
+                  z-10 overflow-hidden`
+                }
+                style={{
+                  textShadow: '0 2px 8px #a259ff, 0 0 16px #fff',
+                  fontSize: '1.05rem',
+                  letterSpacing: '0.01em',
+                }}
+              >
+                <span className="relative z-10 flex items-center gap-1">
+                  {item.icon && <span className="group-hover:animate-bounce-gentle animate-floatSlow">{item.icon}</span>}
+                  {item.name}
+                </span>
+              </a>
+            ))}
           </nav>
 
           {/* Desktop CTA Buttons */}

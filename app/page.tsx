@@ -1,89 +1,26 @@
 "use client"
 
-import { useState } from "react"
-import { Sparkles, BookOpen, Palette, Wand2, Package, X, ArrowRight, Instagram } from "lucide-react"
-import BookPreview from "./components/book-preview"
+import { Instagram } from "lucide-react"
 import Header from "./components/header"
 import SplitText from "./components/SplitText"
-import Link from "next/link"
+import Image from "next/image"
 
 export default function HomePage() {
-  const [showChat, setShowChat] = useState(false)
-
   const handleAnimationComplete = () => {
     console.log('Motto animation completed!');
   };
-
-  const storyTemplates = [
-    { id: 1, title: "Dragon Adventure", cover: "/placeholder.svg?height=300&width=200", theme: "Fantasy" },
-    { id: 2, title: "Space Explorer", cover: "/placeholder.svg?height=300&width=200", theme: "Sci-Fi" },
-    { id: 3, title: "Underwater Quest", cover: "/placeholder.svg?height=300&width=200", theme: "Ocean" },
-    { id: 4, title: "Fairy Garden", cover: "/placeholder.svg?height=300&width=200", theme: "Magic" },
-    { id: 5, title: "Pirate Treasure", cover: "/placeholder.svg?height=300&width=200", theme: "Adventure" },
-    { id: 6, title: "Enchanted Forest", cover: "/placeholder.svg?height=300&width=200", theme: "Nature" },
-    { id: 7, title: "Superhero Academy", cover: "/placeholder.svg?height=300&width=200", theme: "Heroes" },
-    { id: 8, title: "Time Machine", cover: "/placeholder.svg?height=300&width=200", theme: "Time Travel" },
-  ]
-
-  const steps = [
-    {
-      icon: <BookOpen className="w-8 h-8" />,
-      title: "Choose a magical story template",
-      description: "Pick from our collection of enchanting adventures",
-    },
-    {
-      icon: <Palette className="w-8 h-8" />,
-      title: "Add your child's details",
-      description: "Personalize with their name, photo, or drawings",
-    },
-    {
-      icon: <Wand2 className="w-8 h-8" />,
-      title: "Let AI generate the story",
-      description: "Watch as magic creates unique illustrations and tales",
-    },
-    {
-      icon: <Package className="w-8 h-8" />,
-      title: "Receive your printed book",
-      description: "Get a beautiful hardcover book delivered to your door",
-    },
-  ]
-
-  const featuredBooks = [
-    {
-      id: 1,
-      title: "The Dragon's Secret",
-      description: "A magical journey through ancient mountains where dragons still roam.",
-      cover: "/placeholder.svg?height=300&width=200",
-      theme: "Fantasy",
-      price: "$24.99"
-    },
-    {
-      id: 2,
-      title: "Starlight Explorer",
-      description: "Blast off into space and discover the wonders of distant galaxies.",
-      cover: "/placeholder.svg?height=300&width=200",
-      theme: "Sci-Fi",
-      price: "$24.99"
-    },
-    {
-      id: 3,
-      title: "Ocean's Hidden Kingdom",
-      description: "Dive deep into an underwater world of mermaids and sea creatures.",
-      cover: "/placeholder.svg?height=300&width=200",
-      theme: "Adventure",
-      price: "$24.99"
-    }
-  ];
 
   return (
     <div className="min-h-screen bg-white">
       <Header />
       {/* Hero Image Section - Full Width, Top of Page */}
       <div className="w-screen h-screen max-w-none relative left-1/2 right-1/2 -translate-x-1/2 overflow-hidden flex items-center justify-center">
-        <img
+        <Image
           src="/lfw_logo.png"
           alt="Dream World Hero"
-          className="w-full h-full object-cover block select-none pointer-events-none"
+          fill
+          className="object-cover select-none pointer-events-none"
+          priority
           draggable={false}
         />
         {/* Poetic Motto - Centered in hero sector, on top of image */}
@@ -204,38 +141,6 @@ export default function HomePage() {
           </div>
         </div>
       </footer>
-
-      {/* AI Assistant Floating Icon */}
-      <div className="fixed bottom-6 right-6 z-50">
-        <button
-          onClick={() => setShowChat(!showChat)}
-          className="w-14 h-14 bg-gradient-to-r from-yellow-300 to-orange-300 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 flex items-center justify-center text-2xl animate-bounce-gentle"
-        >
-          ⭐
-        </button>
-
-        {showChat && (
-          <div className="absolute bottom-16 right-0 w-80 bg-white rounded-2xl shadow-xl p-6 fade-in">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="font-semibold text-purple-800 font-sans">Stella the Story Fairy</h3>
-              <button onClick={() => setShowChat(false)} className="text-purple-400 hover:text-purple-600">
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-            <div className="space-y-3 text-sm text-purple-600 font-sans">
-              <p>✨ Hi there! I'm Stella, your magical story guide!</p>
-              <p>🌟 I can help you:</p>
-              <ul className="list-disc list-inside space-y-1 ml-2">
-                <li>Choose the perfect story template</li>
-                <li>Personalize your child's adventure</li>
-                <li>Answer questions about our books</li>
-                <li>Track your order status</li>
-              </ul>
-              <p>💫 What magical story shall we create today?</p>
-            </div>
-          </div>
-        )}
-      </div>
     </div>
   )
 }
